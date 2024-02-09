@@ -1,4 +1,3 @@
-const axios = require("axios");
 const tcpp = require("tcp-ping");
 const ping = require("@louislam/ping");
 const { R } = require("redbean-node");
@@ -90,25 +89,6 @@ exports.getOidcTokenClientCredentials = async (tokenEndpoint, clientId, clientSe
     }
     return await client.grant(grantParams);
 };
-
-/**
- * Query NCPA api
- * @param {string} url
- * @returns {number} value from api
- */
-exports.checkNCPA = function(url) {
-    console.log("Starting checkNCPA")
-    axios.get(url)
-    .then(function (response) {
-        return response.data.percent[0][0];
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
-    .finally(function() {
-        console.log("Finished checking NCPA");
-    });
-}
 
 /**
  * Send TCP request to specified hostname and port
